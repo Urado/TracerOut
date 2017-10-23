@@ -4,3 +4,9 @@ c:\users\samurai\documents\visual studio 2017\Projects\TracerouteConsole\Tracero
 c:\users\samurai\documents\visual studio 2017\Projects\TracerouteConsole\TracerouteConsole\obj\Debug\TracerouteConsole.csprojResolveAssemblyReference.cache
 c:\users\samurai\documents\visual studio 2017\Projects\TracerouteConsole\TracerouteConsole\obj\Debug\TracerouteConsole.exe
 c:\users\samurai\documents\visual studio 2017\Projects\TracerouteConsole\TracerouteConsole\obj\Debug\TracerouteConsole.pdb
+D:\Repos\TracerOut\TracerouteConsole\TracerouteConsole\bin\Debug\TracerouteConsole.exe.config
+D:\Repos\TracerOut\TracerouteConsole\TracerouteConsole\bin\Debug\TracerouteConsole.exe
+D:\Repos\TracerOut\TracerouteConsole\TracerouteConsole\bin\Debug\TracerouteConsole.pdb
+D:\Repos\TracerOut\TracerouteConsole\TracerouteConsole\obj\Debug\TracerouteConsole.csprojResolveAssemblyReference.cache
+D:\Repos\TracerOut\TracerouteConsole\TracerouteConsole\obj\Debug\TracerouteConsole.exe
+D:\Repos\TracerOut\TracerouteConsole\TracerouteConsole\obj\Debug\TracerouteConsole.pdb

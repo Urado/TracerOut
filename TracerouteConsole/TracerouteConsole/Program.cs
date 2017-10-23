@@ -16,18 +16,24 @@ namespace TracerouteConsole
         static string _fileName = "D:\\tmp.txt";
         static void Main(string[] args)
         {
-            FileStream FS = new FileStream(_fileName, FileMode.OpenOrCreate, FileAccess.Write);
+
             while (true)
             {
-                using (StreamWriter SW = new StreamWriter(FS))
-                {
+                Console.WriteLine("Begin writing");
 
-                    var sites = new List<Task>();
-                    sites.Add(MyTraceRoute.PrintTraceAsync("mail.ru", SW));
-                    sites.Add(MyTraceRoute.PrintTraceAsync("ya.ru", SW));
-                    sites.Add(MyTraceRoute.PrintTraceAsync("vk.com", SW));
-                    sites.Add(MyTraceRoute.PrintTraceAsync("Google.com", SW));
-                }
+                FileStream FS = new FileStream(_fileName, FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter SW = new StreamWriter(FS);
+                FS.Position = FS.Length;
+                var sites = new List<Task>();
+                sites.Add(MyTraceRoute.PrintTraceAsync("mail.ru", SW));
+                sites.Add(MyTraceRoute.PrintTraceAsync("ya.ru", SW));
+                sites.Add(MyTraceRoute.PrintTraceAsync("vk.com", SW));
+                sites.Add(MyTraceRoute.PrintTraceAsync("Google.com", SW));
+                foreach (var t in sites)
+                    t.Wait();
+                SW.Close();
+                FS.Close();
+                Console.WriteLine("End writing");
                 Thread.Sleep(120000);
             }
         }
@@ -44,12 +50,12 @@ namespace TracerouteConsole
 
         private static Task PrintTrace(string hostNameOrAddress, StreamWriter writer)
         {
-            return Task.Run( () =>
+            return Task.Run(() =>
             {
                 int i = 1;
                 foreach (var ip in MyTraceRoute.GetTraceRoute(hostNameOrAddress))
                 {
-                    writer.WriteLineAsync(i.ToString()+ ", " + hostNameOrAddress + ", " + ip.ToString());
+                    writer.WriteLineAsync(i.ToString() + ", " + hostNameOrAddress + ", " + ip.ToString());
                     i++;
                 }
             });
@@ -57,9 +63,9 @@ namespace TracerouteConsole
 
         private static IEnumerable<IPAddress> GetTraceRoute(string hostNameOrAddress)
         {
-            for (int ttl = 1;; ttl++)
+            for (int ttl = 1; ; ttl++)
             {
-                PingReply reply=default(PingReply);
+                PingReply reply = default(PingReply);
                 try
                 {
                     Ping pinger = new Ping();
